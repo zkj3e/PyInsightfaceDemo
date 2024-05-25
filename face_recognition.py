@@ -26,11 +26,18 @@ if len(faces1) == 0 or len(faces2) == 0:
     exit()
 
 # 提取第一个人脸的特征向量
-embedding1 = faces1[0].embedding
+embedding1 = faces1[0].normed_embedding
 
 # 提取第二个人脸的特征向量
-embedding2 = faces2[0].embedding
+embedding2 = faces2[0].normed_embedding
 
+embeddings = []
+embeddings.append(embedding1)
+embeddings.append(embedding2)
+
+feats = np.array(embeddings, dtype=np.float32)
+sims = np.dot(feats, feats.T)
+print("点积相似度:", sims)
 
 # 打印相似度分数
 cosine_similarity = np.dot(embedding1, embedding2) / (np.linalg.norm(embedding1) * np.linalg.norm(embedding2))
