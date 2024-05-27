@@ -19,8 +19,10 @@ if __name__ == '__main__':
     img = cv2.imread('zta.jpg')
     faces = app.get(img)
     source_face = faces[0]
-    res = cv2.imread('t5.jpg')
-    for face in faces:
+    print(source_face)
+    res = cv2.imread('MJYS295_002.jpg')
+    resFaces =  app.get(res)
+    for face in resFaces:
         print('xxx')
         res = swapper.get(res, face, source_face, paste_back=True)
     cv2.imwrite("./zxa_swapped.jpg", res)

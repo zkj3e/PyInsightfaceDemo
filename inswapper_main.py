@@ -17,7 +17,7 @@ if __name__ == '__main__':
     swapper = insightface.model_zoo.get_model('inswapper_128.onnx', download=True, download_zip=True)
 
 
-    img = ins_get_image('t1')
+    img = ins_get_image('z')
     faces = app.get(img)
     faces = sorted(faces, key = lambda x : x.bbox[0])
     assert len(faces)==6
